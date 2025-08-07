@@ -1,0 +1,19 @@
+server:
+  port: ${PORT:8004}
+  servlet:
+    context-path: /api/v1/policy
+
+spring:
+  application:
+    name: policy-service
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/policy_db}
+    username: ${SPRING_DATASOURCE_USERNAME:dbmasteruser}
+    password: ${SPRING_DATASOURCE_PASSWORD:qwerty123}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka}
