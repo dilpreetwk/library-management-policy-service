@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @Tag(name = "Policy", description = "Operations related to policies")
@@ -27,5 +29,14 @@ public class PolicyController {
             @Parameter(description = "Policy Key to be searched") @PathVariable String key
     ) {
         return ResponseEntity.ok(policyService.getPolicyByKey(key));
+    }
+
+    @Operation(
+            summary = "Get all policies",
+            description = "Retrieve a list of all policies"
+    )
+    @GetMapping
+    public ResponseEntity<List<Policy>> getAllPolicies() {
+        return ResponseEntity.ok(policyService.getAllPolicies());
     }
 }
